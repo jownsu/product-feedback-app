@@ -1,0 +1,12 @@
+@import "../../assets/sass/variables";
+
+#home{
+    max-width: $max_width;
+    margin: 9.4rem auto 0;
+    display: flex;
+    gap: 3rem;
+
+    main{
+        flex: 1;
+    }
+}

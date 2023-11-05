@@ -1,0 +1,122 @@
+@import "../../../../assets/sass/variables";
+
+#suggestion_header{
+
+    background: $color_tertiary;
+    border-radius: 1rem;
+    padding: 0 1.6rem;
+    height: 7.2rem;
+    display: flex;
+    align-items: center;
+    gap: 3.2rem;
+
+    .suggestion{
+        color: $color_white;
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: -.25px;
+        display: flex;
+        gap: 1.6rem;
+        margin-left: .7rem;
+
+        &__icon{
+            display: block;
+            background: url("/images/suggestions/icon-suggestions.svg") no-repeat center;
+            height: 2.5rem;
+            width: 2.5rem;
+        }
+    }
+
+    .suggestion_sort_dropdown{
+
+        button{
+            background: none;
+            border: none;
+            color: #F2F4FE;
+            font-size: 1.4rem;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+
+            &::after{
+                background: url("/images/suggestions/icon-arrow-down.svg") no-repeat center;
+                border: none;
+                height: 2rem;
+                width: 2rem;
+                margin-left: .5rem;
+                vertical-align: 0;
+                transition: transform .2s;
+            }
+
+            &[aria-expanded="true"]::after{
+                transform: rotate(180deg);
+            }
+
+            span{
+                font-weight: 700;
+                margin-left: .5rem;
+            }
+        }
+
+        .dropdown-menu{
+            width: 25.5rem;
+            padding: 0;
+            border: none;
+            border-radius: 1rem;
+            box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.35);
+            transform: translate(0px, 66px) !important;
+            overflow: hidden;
+
+            .dropdown-item{
+                font-size: 1.6rem;
+                font-weight: 400;
+                color: $color_grey_dark_2;
+                padding: 1.2rem 2.4rem;
+
+                &:not(:last-of-type){
+                    border-bottom: 1px solid rgba($color_grey_dark_1, .15);
+                }
+
+                &:hover{
+                    background: none;
+                    color: $color_primary;
+                }
+
+                &.active{
+                    background: none;
+                    position: relative;
+
+                    &::before{
+                        position: absolute;
+                        content: "";
+                        height: 1.5rem;
+                        width: 1.5rem;
+                        right: 2.4rem;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        background: url("/images/shared/icon-check.svg") no-repeat center;
+                    }
+                }
+            }
+        }
+    }
+
+    .add_feedback_btn{
+        margin-left: auto;
+        font-family: inherit;
+        color: #F2F4FE;
+        font-size: 1.4rem;
+        font-weight: 700;
+        height: 4.4rem;
+        padding: 0 2.4rem;
+        border: none;
+        outline: none;
+        background: $color_primary;
+        border-radius: 1rem;
+        transition: all .2s;
+
+        &:hover{
+            background: #C75AF6;
+        }
+    }
+}

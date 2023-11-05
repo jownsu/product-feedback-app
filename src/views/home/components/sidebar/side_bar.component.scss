@@ -1,0 +1,135 @@
+@import "../../../../assets/sass/variables";
+
+aside#sidebar{
+    width: 25.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+
+    .header{
+        background: url("/images/suggestions/desktop/background-header.png");
+        height: 13.7rem;
+        border-radius: 1rem;
+        padding: 2.4rem;
+        color: $color_white;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        &__title{
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.25px;
+        }
+
+        &__sub_title{
+            font-size: 1.5rem;
+            font-weight: 500;
+            opacity: .75;
+        }
+    }
+
+    .suggestion_filter{
+        background: $color_white;
+        padding: 2.4rem;
+        border-radius: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: .8rem;
+        row-gap: 1.4rem;
+
+        button{
+            font-family: inherit;
+            font-size: 1.3rem;
+            font-weight: 600;
+            padding: 0 1.6rem;
+            color: $color_secondary;
+            background: $color_grey_light_1;
+            border: none;
+            outline: none;
+            border-radius: 1rem;
+            height: 3rem;
+            transition: all .2s;
+
+            &:hover{
+                background: #CFD7FF;
+            }
+
+            &.active{
+                background: $color_secondary;
+                color: $color_white;
+            }
+        }
+    }
+
+    .roadmap{
+        background: $color_white;
+        padding: 2.4rem;
+        border-radius: 1rem;
+
+        &__header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            p{
+                font-size: 1.8rem;
+                font-weight: 700;
+                letter-spacing: -.25px;
+                color: $color_grey_dark_1;
+            }
+
+            a{
+                font-size: 1.3rem;
+                font-weight: 600;
+                color: $color_secondary;
+            }
+        }
+
+        &__list{
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: .4rem;
+        }
+
+        &__item{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: $color_grey_dark_2;
+            font-size: 1.6rem;
+            position: relative;
+
+            &::before{
+                content: "";
+                position: absolute;
+                left: 0;
+                height: .8rem;
+                width: .8rem;
+                border-radius: 50%;
+                background: $color_black;
+            }
+
+
+            &:nth-child(1)::before{
+                background: $color_orange;
+            }
+            &:nth-child(2)::before{
+                background: $color_primary;
+            }
+            &:nth-child(3)::before{
+                background: $color_cyan;
+            }
+
+            &--title{
+                padding-left: 2.4rem;
+                font-weight: 400;
+            }
+
+            &--count{
+                font-weight: 700;
+            }
+        }
+    }
+}
