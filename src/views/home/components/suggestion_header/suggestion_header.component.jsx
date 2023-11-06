@@ -28,7 +28,7 @@ const SuggestionHeader = () => {
                 </Dropdown.Menu>
             </Dropdown>
 
-            <button type="button" className="add_feedback_btn">+ Add Feedback</button>
+            <button type="button" className="add_feedback_btn btn btn--primary">+ Add Feedback</button>
         </div>
     )
 }

@@ -30,3 +30,26 @@ body{
     background: $color_grey_light_2;
 }
 
+.btn{
+    font-family: inherit;
+    color: #F2F4FE;
+    font-size: 1.4rem;
+    font-weight: 700;
+    height: 4.4rem;
+    padding: 0 2.4rem;
+    border: none;
+    outline: none;
+    border-radius: 1rem;
+    transition: all .2s;
+
+    &.btn{
+        &--primary{
+            background: $color_primary;
+
+            &:hover{
+                background: #C75AF6;
+                color: #F2F4FE;
+            }
+        }
+    }
+}
