@@ -3,6 +3,7 @@ import React from "react";
 
 /* Plugins */
 import { Dropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 /* Styles */
 import "./suggestion_header.component.scss";
@@ -28,7 +29,13 @@ const SuggestionHeader = () => {
                 </Dropdown.Menu>
             </Dropdown>
 
-            <button type="button" className="add_feedback_btn btn btn--primary">+ Add Feedback</button>
+            <Link 
+                to="/create_feedback"
+                type="button" 
+                className="add_feedback_btn btn btn--primary"
+            >
+                + Add Feedback
+            </Link>
         </div>
     )
 }

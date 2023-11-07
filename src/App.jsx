@@ -1,5 +1,9 @@
+/* Plugins */
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+/* Pages */
 import Home from "./views/home/home";
+import CreateFeedback from "./views/create_feedback/create_feedback";
 
 
 function App() {
@@ -7,6 +11,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home />} />                
+                <Route path="/create_feedback" element={<CreateFeedback />} />                
             </Routes>        
         </BrowserRouter>
     )
