@@ -25,7 +25,7 @@ function Home() {
                 <div id="suggestions_container">
                     {
                         !!product_requests.length &&
-                            product_requests.map(product => <SuggestionItem product={product} />)
+                            product_requests.map(product => <SuggestionItem key={product.id} product={product} />)
                     }
 
                     {
