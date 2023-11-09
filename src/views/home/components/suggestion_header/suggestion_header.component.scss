@@ -1,7 +1,6 @@
 @import "../../../../assets/sass/variables";
 
 #suggestion_header{
-
     background: $color_tertiary;
     border-radius: 1rem;
     padding: 0 1.6rem;
@@ -10,7 +9,7 @@
     align-items: center;
     gap: 3.2rem;
 
-    .suggestion{
+    .suggests{
         color: $color_white;
         font-size: 1.8rem;
         font-weight: 700;

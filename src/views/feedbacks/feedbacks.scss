@@ -1,0 +1,12 @@
+@import "../../assets/sass/variables";
+
+.feedbacks{
+    margin: 8rem auto 2rem;
+    max-width: 73rem;
+
+    .header{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2.4rem;
+    }
+}

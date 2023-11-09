@@ -11,9 +11,9 @@ import "./suggestion_header.component.scss";
 const SuggestionHeader = () => {
     return (
         <div id="suggestion_header">
-            <div className="suggestion">
-                <span className="suggestion__icon"></span>
-                <p className="suggestion__count">6 Suggestions</p>
+            <div className="suggests">
+                <span className="suggests__icon"></span>
+                <p className="suggests__count">6 Suggestions</p>
             </div>
 
             <Dropdown className="suggestion_sort_dropdown">
