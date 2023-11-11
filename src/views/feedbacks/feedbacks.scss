@@ -9,4 +9,19 @@
         justify-content: space-between;
         margin-bottom: 2.4rem;
     }
+
+    .comments_container{
+        background: $color_white;
+        border-radius: 1rem;
+        margin-top: 2.4rem;
+        padding: 2.4rem 3.2rem;
+
+        h3{
+            color: $color_grey_dark_1;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -.25px;
+            margin-bottom: 2rem;
+        }
+    }
 }

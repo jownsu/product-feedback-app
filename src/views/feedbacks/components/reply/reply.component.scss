@@ -1,0 +1,62 @@
+@import "../../../../assets/sass/variables";
+
+.replies_container{
+
+    .reply{
+
+        padding-left: 7.2rem;
+        padding-bottom: 3.1rem;
+
+        &__head{
+            display: flex;
+            align-items: center;
+            gap: 3.2rem;
+        }
+
+        &__avatar{
+            height: 4rem;
+            width: 4rem;
+            border-radius: 50%;
+        }
+
+        &__user{
+            font-size: 1.4rem;
+
+            &--fullname{
+                color: $color_grey_dark_1;
+                font-weight: 700;
+                letter-spacing: -0.194px;
+                margin-bottom: 0;
+                line-height: normal;
+            }
+
+            &--username{
+                color: $color_grey_dark_2;
+                font-weight: 400;
+            }
+        }
+
+        &__reply{
+            margin-left: auto;
+            color: $color_secondary;
+            font-size: 1.4rem;
+            font-weight: 600;
+            border: none;
+            outline: none;
+            background: none;
+        }
+
+        &__content{
+            color: $color_grey_dark_2;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-left: 7.2rem;
+            margin-top: 1.5rem;
+        }
+
+        &__tag{
+            color: $color_primary;
+            font-weight: 700;
+        }
+    }
+}

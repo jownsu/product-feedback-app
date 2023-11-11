@@ -3,6 +3,7 @@ import React from "react";
 
 /* Components */
 import SuggestionItem from "../home/components/suggestion_item/suggestion_item.component";
+import Comment from "./components/comment/comment.component";
 
 /* Plugins */
 import { useParams, Link } from "react-router-dom";
@@ -41,7 +42,13 @@ const Feedbacks = () => {
 
             <SuggestionItem product={selected_feedback} />
 
-        </div>
+            <div className="comments_container">
+                <h3>{selected_feedback.comments.length} Comments</h3>
+                {
+                    selected_feedback.comments.map(comment => <Comment comment={comment} />)
+                }
+            </div>
+         </div>
     )
 }
 

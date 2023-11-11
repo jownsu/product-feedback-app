@@ -5,6 +5,9 @@ aside#sidebar{
     display: flex;
     flex-direction: column;
     gap: 2.4rem;
+    height: fit-content;
+    position: sticky;
+    top: 2rem;
 
     .header{
         background: url("/images/suggestions/desktop/background-header.png");
