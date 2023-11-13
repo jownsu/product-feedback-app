@@ -61,6 +61,10 @@
             border: none;
             outline: none;
             background: none;
+
+            &:hover{
+                text-decoration: underline;
+            }
         }
 
         &__content{
@@ -70,9 +74,17 @@
             margin-left: 7.2rem;
             margin-top: 1.5rem;
         }
+
+        > .reply_form{
+            margin-left: 7.2rem;
+            margin-top: 2.3rem;
+        }
     }
 
     .replies_container{
         margin-top: 3rem;
+        > .reply_form{
+            margin-left: 14.4rem;
+        }
     }
 }

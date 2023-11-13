@@ -37,7 +37,6 @@ const CreateFeedback = () => {
         navigate("/");
     }
 
-
     return(
         <div className="create_feedback">
             <Link 

@@ -4,6 +4,7 @@ import React from "react";
 /* Components */
 import SuggestionItem from "../home/components/suggestion_item/suggestion_item.component";
 import Comment from "./components/comment/comment.component";
+import AddComment from "./components/add_comment/add_comment.component";
 
 /* Plugins */
 import { useParams, Link } from "react-router-dom";
@@ -44,11 +45,11 @@ const Feedbacks = () => {
 
             <div className="comments_container">
                 <h3>{selected_feedback.comments.length} Comments</h3>
-                {
-                    selected_feedback.comments.map(comment => <Comment comment={comment} />)
-                }
+                { selected_feedback.comments.map(comment => <Comment comment={comment} />) }
             </div>
-         </div>
+
+            <AddComment />
+        </div>
     )
 }
 

@@ -150,6 +150,11 @@ body{
     display: flex;
     align-items: center;
 
+    &:disabled{
+        opacity: .5;
+        color: $color_white;
+    }
+
     &.btn{
         &--primary{
             background: $color_primary;
