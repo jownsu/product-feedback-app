@@ -4,7 +4,7 @@ import React, { useState } from "react";
 /* Style */
 import "./add_comment.component.scss";
 
-const AddComment = () => {
+const AddComment = ({onSubmit = () => {}}) => {
     
     const [content, setContent] = useState("");
     
@@ -18,6 +18,8 @@ const AddComment = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        onSubmit(content);
+        setContent("");
     }
 
     return(

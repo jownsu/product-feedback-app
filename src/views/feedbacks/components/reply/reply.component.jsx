@@ -4,7 +4,7 @@ import React from "react";
 /* Style */
 import "./reply.component.scss";
 
-const Reply = ({reply}) => {
+const Reply = ({reply, onReplyClick = () => {}}) => {
     return(
         <div className="reply">
             <div className="reply__head">
@@ -17,7 +17,13 @@ const Reply = ({reply}) => {
                     <p className="reply__user--fullname">{reply.user.name}</p>
                     <p className="reply__user--username">@{reply.user.username}</p>
                 </div>
-                <button type="button" className="reply__reply">Reply</button>
+                <button 
+                    type="button" 
+                    className="reply__reply"
+                    onClick={() => onReplyClick(reply.user.username)}
+                >
+                    Reply
+                </button>
             </div>
             <p className="reply__content"><span className="reply__tag">@{reply.replying_to}</span> {reply.content}</p>
         </div>

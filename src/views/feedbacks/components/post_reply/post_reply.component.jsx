@@ -4,7 +4,7 @@ import React, { useState } from "react";
 /* Styles */
 import "./post_reply.component.scss";
 
-const PostReply = () => {
+const PostReply = ({onSubmit = () => {}}) => {
     
     const [content, setContent] = useState("");
 
@@ -17,8 +17,14 @@ const PostReply = () => {
         }
     }
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        onSubmit(content);
+        setContent("");
+    }
+
     return(
-        <form className="reply_form">
+        <form className="reply_form" onSubmit={handleSubmit}>
             <textarea value={content} onChange={handleChange} name="content"></textarea>
             <button 
                 type="submit" 
