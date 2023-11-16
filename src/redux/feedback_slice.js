@@ -68,6 +68,17 @@ export const feedbackSlice = createSlice({
                 }
                 return feedback;
             });
+        },
+        editFeedback: (state, action) => {
+            state.product_requests = state.product_requests.map(feedback => {
+                if(feedback.id === +action.payload.id){
+                    return {
+                        ...feedback,
+                        ...action.payload
+                    }
+                }
+                return feedback;
+            });
         }
     }
 });
@@ -77,5 +88,10 @@ function generateRandomID() {
     return Math.floor(100 + Math.random() * 999999);
 }
 
-export const { createFeedback, postComment, postReply } = feedbackSlice.actions;
+export const { 
+    createFeedback, 
+    postComment, 
+    postReply, 
+    editFeedback 
+} = feedbackSlice.actions;
 export default feedbackSlice.reducer;

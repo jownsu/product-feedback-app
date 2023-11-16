@@ -1,0 +1,42 @@
+@import "../../assets/sass/variables";
+
+.edit_feedback{
+    margin: 9.2rem auto;
+    max-width: 54rem;
+
+    .edit_feedback_form{
+        background: $color_white;
+        padding: 5.7rem 4.2rem 4rem;
+        border-radius: 1rem;
+        margin-top: 5rem;
+        position: relative;
+
+    
+        .plus_icon{
+            display: block;
+            height: 5.6rem;
+            width: 5.6rem;
+            background: url("/images/shared/icon-new-feedback.svg") no-repeat center;
+            position: absolute;
+            top: -2.8rem;
+        }
+
+        h2{
+            color: $color_grey_dark_1;
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -.333px;
+            margin-bottom: 4rem;
+        }
+
+        .action_container{
+            display: flex;
+            gap: 1.6rem;
+            margin-top: 2.7rem;
+
+            :first-child{
+                margin-right: auto;
+            }
+        }
+    }
+}

@@ -183,6 +183,15 @@ body{
                 color: #F2F4FE;
             }
         }
+        &--danger{
+            background: $color_red;
+
+            &:hover,
+            &:focus{
+                background: $color_red_light;
+                color: #F2F4FE;
+            }
+        }
     }
 }
 

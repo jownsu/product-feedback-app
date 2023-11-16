@@ -25,7 +25,7 @@ const Feedbacks = () => {
     const { feedback_id } = useParams();
     const { product_requests } = useSelector(state => state.feedback);
 
-    const selected_feedback = product_requests.find(product => product.id == feedback_id)
+    const selected_feedback = product_requests.find(product => product.id == feedback_id);
 
     const handleReply = (data) => {
         dispatch(postReply({

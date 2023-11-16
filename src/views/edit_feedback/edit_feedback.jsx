@@ -2,24 +2,28 @@
 import React from "react";
 
 /* Plugins */
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Dropdown } from "react-bootstrap";
 
 /* Redux */
-import { useDispatch } from "react-redux";
-import { createFeedback } from "../../redux/feedback_slice";
+import { useDispatch, useSelector } from "react-redux";
+import { editFeedback } from "../../redux/feedback_slice";
 
 /* Constants */
 import { CATEGORIES, STATUS } from "../../assets/constants/constants";
 
 /* Styles */
-import "./create_feedback.scss";
+import "./edit_feedback.scss";
 
-const CreateFeedback = () => {
+const EditFeedback = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { feedback_id } = useParams();
+
+    const { product_requests } = useSelector(state => state.feedback);
+    const selected_feedback = product_requests.find(product => product.id == feedback_id);
 
     const { 
         register, 
@@ -29,20 +33,21 @@ const CreateFeedback = () => {
         formState: { errors } 
     } = useForm({
         defaultValues: {
-            title: "",
-            category: 1,
-            status: 1,
-            description: ""
+            id: selected_feedback.id,
+            title: selected_feedback.title,
+            category: selected_feedback.category,
+            status: selected_feedback.status,
+            description: selected_feedback.description
         }
     });
 
     const handleCreateFeedbackSubmit = (form_data) => {
-        dispatch(createFeedback(form_data));
-        navigate("/");
+        dispatch(editFeedback(form_data));
+        navigate(`/feedbacks/${selected_feedback.id}`);
     }
 
     return(
-        <div className="create_feedback">
+        <div className="edit_feedback">
             <Link 
                 to="/" 
                 className="back"
@@ -50,9 +55,9 @@ const CreateFeedback = () => {
                 <span className="back__icon"></span> 
                 Go back
             </Link>
-            <form onSubmit={handleSubmit(handleCreateFeedbackSubmit)} className="create_feedback_form">
+            <form onSubmit={handleSubmit(handleCreateFeedbackSubmit)} className="edit_feedback_form">
                 <span className="plus_icon"></span>
-                <h2>Create New Feedback</h2>
+                <h2>Edit Feedback</h2>
                 <div className={`input ${errors?.title ? "input--error" : ""}`}>
                     <p className="input__main_label">Feedback Title</p>
                     <p className="input__sub_label">Add a short, descriptive headline</p>
@@ -69,10 +74,10 @@ const CreateFeedback = () => {
                     <Dropdown className="input__dropdown">
                         <Dropdown.Toggle>{CATEGORIES[watch("category")]}</Dropdown.Toggle>
                         <Dropdown.Menu className="input__dropdown--menu">
-
                         {
                             Object.entries(CATEGORIES).map(([key, category]) => (
                                 <Dropdown.Item
+                                    key={key}
                                     as="div"
                                     className="input__dropdown--option"
                                     onClick={() => setValue("category", key)}
@@ -82,6 +87,28 @@ const CreateFeedback = () => {
                                 </Dropdown.Item>
                             ))
                         }
+                        </Dropdown.Menu>
+                    </Dropdown>
+                </div>
+                <div className="input">
+                    <p className="input__main_label">Update Status</p>
+                    <p className="input__sub_label">Change feedback state</p>
+                    <Dropdown className="input__dropdown">
+                        <Dropdown.Toggle>{STATUS[watch("status")]}</Dropdown.Toggle>
+                        <Dropdown.Menu className="input__dropdown--menu">
+                            {
+                                Object.entries(STATUS).map(([key, status]) => (
+                                    <Dropdown.Item
+                                        key={key}
+                                        as="div"
+                                        className="input__dropdown--option"
+                                        onClick={() => setValue("status", key)}
+                                    >
+                                        {status}
+                                        {watch("status") === key && <span className="input__dropdown--check"></span>}
+                                    </Dropdown.Item>
+                                ))
+                            }
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>
@@ -96,12 +123,13 @@ const CreateFeedback = () => {
                     {errors?.description && <p className="input__error_msg">Can't be empty</p>}
                 </div>
                 <div className="action_container">
+                    <button type="button" className="btn btn--danger">Delete</button>
                     <Link to="/" className="btn btn--tertiary">Cancel</Link>
-                    <button type="submit" className="btn btn--primary">Add Feedback</button>
+                    <button type="submit" className="btn btn--primary">Save Changes</button>
                 </div>
             </form>
         </div>
     )
 }
 
-export default CreateFeedback;
+export default EditFeedback;
