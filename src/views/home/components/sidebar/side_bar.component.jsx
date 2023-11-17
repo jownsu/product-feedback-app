@@ -1,13 +1,16 @@
 /* React */
 import React from "react";
 
+/* Constants */
+import { CATEGORY } from "../../../../assets/constants/constants";
+
 /* Plugins */
 import { Link } from "react-router-dom";
 
 /* Styles */
 import "./side_bar.component.scss";
 
-const SideBar = () => {
+const SideBar = ({category, setCategory = () => {}}) => {
     return(
         <aside id="sidebar">
             <div className="header">
@@ -16,12 +19,48 @@ const SideBar = () => {
             </div>
 
             <div className="suggestion_filter">
-                <button className="active" type="submit">All</button>
-                <button type="submit">UI</button>
-                <button type="submit">UX</button>
-                <button type="submit">Enhancement</button>
-                <button type="submit">Bug</button>
-                <button type="submit">Feature</button>
+                <button 
+                    className={category === CATEGORY.ALL ? "active" : ""} 
+                    type="submit"
+                    onClick={() => setCategory(CATEGORY.ALL)}
+                >
+                    All
+                </button>
+                <button 
+                    className={category === CATEGORY.UI ? "active" : ""}
+                    type="submit"
+                    onClick={() => setCategory(CATEGORY.UI)}
+                >
+                    UI
+                </button>
+                <button 
+                    className={category === CATEGORY.UX ? "active" : ""} 
+                    type="submit"
+                    onClick={() => setCategory(CATEGORY.UX)}
+                >
+                    UX
+                </button>
+                <button 
+                    className={category === CATEGORY.ENHANCEMENT ? "active" : ""} 
+                    type="submit"
+                    onClick={() => setCategory(CATEGORY.ENHANCEMENT)}
+                >
+                    Enhancement
+                </button>
+                <button 
+                    className={category === CATEGORY.BUG ? "active" : ""} 
+                    type="submit"
+                    onClick={() => setCategory(CATEGORY.BUG)}
+                >
+                    Bug
+                </button>
+                <button 
+                    className={category === CATEGORY.FEATURE ? "active" : ""} 
+                    type="submit"
+                    onClick={() => setCategory(CATEGORY.FEATURE)}
+                >
+                    Feature
+                </button>
             </div>
 
             <div className="roadmap">

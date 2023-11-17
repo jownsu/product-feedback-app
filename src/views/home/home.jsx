@@ -1,8 +1,11 @@
 /* React */
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 /* Redux */
 import { useSelector } from "react-redux";
+
+/* Constants */
+import { CATEGORY, SORT } from "../../assets/constants/constants";
 
 /* Components */
 import SideBar from "./components/sidebar/side_bar.component";
@@ -16,20 +19,65 @@ import "./home.scss";
 function Home() {
 
     const { product_requests } = useSelector(state => state.feedback);
+    const [category, setCategory] = useState(CATEGORY.ALL);
+    const [requests, setRequests] = useState(product_requests);
+    const [sort, setSort] = useState(SORT.MOST_UPVOTES);
+
+    useEffect(() => {
+        let copy_product_requests = [...requests];
+
+        switch (sort) {
+            case SORT.MOST_UPVOTES:
+                copy_product_requests.sort((a, b) => b.upvotes - a.upvotes);
+                break;
+            case SORT.LEAST_UPVOTES:
+                copy_product_requests.sort((a, b) => a.upvotes - b.upvotes);
+                break;
+            case SORT.MOST_COMMENTS:
+                copy_product_requests.sort((a, b) =>  b.comments.length - a.comments.length);
+                break;
+            case SORT.LEAST_COMMENTS:
+                copy_product_requests.sort((a, b) =>  a.comments.length - b.comments.length);
+                break;
+            default:
+                copy_product_requests.sort((a, b) => b.upvotes - a.upvotes);
+        }
+
+        setRequests(copy_product_requests);
+    }, [sort, category]);
+
+
+    const onChangeCategory = (category) => {
+        setCategory(category);
+        let filtered_product_request;
+        if(category === CATEGORY.ALL){
+            filtered_product_request = product_requests;
+        }
+        else{
+            filtered_product_request = product_requests.filter(product => product.category == category);
+        }
+        setRequests(filtered_product_request);
+    }
 
     return (
         <div id="home">
-            <SideBar />
+            <SideBar 
+                category={category}
+                setCategory={onChangeCategory}
+            />
             <main>
-                <SuggestionHeader />
+                <SuggestionHeader 
+                    sort={sort}
+                    setSort={(sort) => setSort(sort)}
+                    requests_count={requests.length}
+                />
                 <div id="suggestions_container">
                     {
-                        !!product_requests.length &&
-                            product_requests.map(product => <SuggestionItem key={product.id} product={product} />)
+                        !!requests.length &&
+                            requests.map(product => <SuggestionItem key={product.id} product={product} />)
                     }
-
                     {
-                        !product_requests.length &&
+                        !requests.length &&
                             <NoSuggestion />
                     }
                 </div>
