@@ -1,0 +1,33 @@
+@import "../../../../assets/sass/variables";
+
+.feedback_not_found{
+    height: 40rem;
+    background: $color_white;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__icon{
+        height: 17rem;
+        width: 16rem;
+        background: url("/images/suggestions/illustration-empty.svg") no-repeat center / cover;
+        margin-bottom: 3rem;
+    }
+
+    &__title{
+        color: $color_grey_dark_1;
+        font-size: 2.4rem;
+        font-weight: 700;
+        letter-spacing: -.333px;
+        margin-bottom: 1rem;
+    }
+
+    &__description{
+        color: $color_grey_dark_2;
+        font-size: 1.6rem;
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+}

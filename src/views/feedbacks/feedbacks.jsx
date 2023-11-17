@@ -9,6 +9,7 @@ import { postComment, postReply } from "../../redux/feedback_slice";
 import SuggestionItem from "../home/components/suggestion_item/suggestion_item.component";
 import Comment from "./components/comment/comment.component";
 import AddComment from "./components/add_comment/add_comment.component";
+import FeedbackNotFound from "./components/feedback_not_found/feedback_not_found.component";
 
 /* Plugins */
 import { useParams, Link } from "react-router-dom";
@@ -44,23 +45,28 @@ const Feedbacks = () => {
                     <span className="back__icon"></span> 
                     Go back
                 </Link>
-                
-                <Link 
-                    to={`/edit_feedback/${feedback_id}`} 
-                    className="btn btn--secondary"
-                >
-                    Edit Feedback
-                </Link>
+                {
+                    selected_feedback &&
+                        <Link 
+                            to={`/edit_feedback/${feedback_id}`} 
+                            className="btn btn--secondary"
+                        >
+                            Edit Feedback
+                        </Link>
+                }
             </div>
-
-            <SuggestionItem product={selected_feedback} />
-
-            <div className="comments_container">
-                <h3>{selected_feedback.comments.length} Comments</h3>
-                { selected_feedback.comments.map(comment => <Comment comment={comment} onReply={handleReply} />) }
-            </div>
-
-            <AddComment onSubmit={(content) => dispatch(postComment({id: feedback_id, content}))} />
+            {
+                selected_feedback
+                    ? <>
+                        <SuggestionItem product={selected_feedback} />
+                        <div className="comments_container">
+                            <h3>{selected_feedback.comments.length} Comments</h3>
+                            { selected_feedback.comments.map(comment => <Comment comment={comment} onReply={handleReply} />) }
+                        </div>
+                        <AddComment onSubmit={(content) => dispatch(postComment({id: feedback_id, content}))} />
+                    </>
+                    : <FeedbackNotFound />
+            }
         </div>
     )
 }

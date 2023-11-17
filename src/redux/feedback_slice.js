@@ -79,6 +79,10 @@ export const feedbackSlice = createSlice({
                 }
                 return feedback;
             });
+        },
+        deleteFeedback: (state, action) => {
+            let { id } = action.payload;
+            state.product_requests = state.product_requests.filter(feedback => feedback.id !== +id);
         }
     }
 });
@@ -92,6 +96,7 @@ export const {
     createFeedback, 
     postComment, 
     postReply, 
-    editFeedback 
+    editFeedback,
+    deleteFeedback 
 } = feedbackSlice.actions;
 export default feedbackSlice.reducer;

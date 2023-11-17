@@ -8,7 +8,7 @@ import { Dropdown } from "react-bootstrap";
 
 /* Redux */
 import { useDispatch, useSelector } from "react-redux";
-import { editFeedback } from "../../redux/feedback_slice";
+import { editFeedback, deleteFeedback } from "../../redux/feedback_slice";
 
 /* Constants */
 import { CATEGORIES, STATUS } from "../../assets/constants/constants";
@@ -44,6 +44,11 @@ const EditFeedback = () => {
     const handleCreateFeedbackSubmit = (form_data) => {
         dispatch(editFeedback(form_data));
         navigate(`/feedbacks/${selected_feedback.id}`);
+    }
+
+    const handleDeleteFeedback = () => {
+        dispatch(deleteFeedback({id: selected_feedback.id}));
+        navigate("/");
     }
 
     return(
@@ -123,7 +128,13 @@ const EditFeedback = () => {
                     {errors?.description && <p className="input__error_msg">Can't be empty</p>}
                 </div>
                 <div className="action_container">
-                    <button type="button" className="btn btn--danger">Delete</button>
+                    <button 
+                        type="button" 
+                        className="btn btn--danger"
+                        onClick={handleDeleteFeedback}
+                    >
+                        Delete
+                    </button>
                     <Link to="/" className="btn btn--tertiary">Cancel</Link>
                     <button type="submit" className="btn btn--primary">Save Changes</button>
                 </div>
