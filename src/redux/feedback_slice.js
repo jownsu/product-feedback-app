@@ -83,6 +83,20 @@ export const feedbackSlice = createSlice({
         deleteFeedback: (state, action) => {
             let { id } = action.payload;
             state.product_requests = state.product_requests.filter(feedback => feedback.id !== +id);
+        },
+        toggleVote: (state, action) => {
+            let { id } = action.payload;
+
+            state.product_requests = state.product_requests.map(feedback => {
+                if(feedback.id == +id){
+                    return {
+                        ...feedback,
+                        upvotes: feedback.is_upvoted ? feedback.upvotes - 1 : feedback.upvotes + 1,
+                        is_upvoted: !feedback.is_upvoted
+                    }
+                }
+                return feedback;
+            });
         }
     }
 });
@@ -97,6 +111,7 @@ export const {
     postComment, 
     postReply, 
     editFeedback,
-    deleteFeedback 
+    deleteFeedback,
+    toggleVote 
 } = feedbackSlice.actions;
 export default feedbackSlice.reducer;

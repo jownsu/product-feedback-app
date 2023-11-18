@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from "react";
 
 /* Redux */
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleVote } from "../../redux/feedback_slice";
 
 /* Constants */
 import { CATEGORY, SORT } from "../../assets/constants/constants";
@@ -18,6 +19,7 @@ import "./home.scss";
 
 function Home() {
 
+    const dispatch = useDispatch();
     const { product_requests } = useSelector(state => state.feedback);
     const [category, setCategory] = useState(CATEGORY.ALL);
     const [requests, setRequests] = useState(product_requests);
@@ -40,7 +42,6 @@ function Home() {
                 copy_product_requests.sort((a, b) =>  a.comments.length - b.comments.length);
                 break;
             default:
-                copy_product_requests.sort((a, b) => b.upvotes - a.upvotes);
         }
 
         setRequests(copy_product_requests);
@@ -59,6 +60,22 @@ function Home() {
         setRequests(filtered_product_request);
     }
 
+    const handleUpVoteClick = (id) => {
+        dispatch(toggleVote({id}));
+        setRequests(prev_requests => {
+            return prev_requests.map(request => {
+                if(request.id === id){
+                    return {
+                        ...request,
+                        is_upvoted: !request.is_upvoted,
+                        upvotes: request.is_upvoted ? request.upvotes - 1 : request.upvotes + 1
+                    }
+                }
+                return request;
+            });
+        });
+    }
+
     return (
         <div id="home">
             <SideBar 
@@ -74,7 +91,12 @@ function Home() {
                 <div id="suggestions_container">
                     {
                         !!requests.length &&
-                            requests.map(product => <SuggestionItem key={product.id} product={product} />)
+                            requests.map(product => <SuggestionItem 
+                                                        key={product.id} 
+                                                        product={product} 
+                                                        onUpVoteClick={handleUpVoteClick}
+                                                    />
+                                        )
                     }
                     {
                         !requests.length &&

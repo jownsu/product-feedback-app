@@ -3,7 +3,7 @@ import React from "react";
 
 /* Redux */
 import { useDispatch } from "react-redux";
-import { postComment, postReply } from "../../redux/feedback_slice";
+import { postComment, postReply, toggleVote } from "../../redux/feedback_slice";
 
 /* Components */
 import SuggestionItem from "../home/components/suggestion_item/suggestion_item.component";
@@ -35,6 +35,10 @@ const Feedbacks = () => {
         }));
     }
 
+    const handleUpVoteClick = (id) => {
+        dispatch(toggleVote({id}));
+    }
+
     return(
         <div className="feedbacks">
             <div className="header">
@@ -58,7 +62,10 @@ const Feedbacks = () => {
             {
                 selected_feedback
                     ? <>
-                        <SuggestionItem product={selected_feedback} />
+                        <SuggestionItem 
+                            product={selected_feedback} 
+                            onUpVoteClick={handleUpVoteClick}    
+                        />
                         <div className="comments_container">
                             <h3>{selected_feedback.comments.length} Comments</h3>
                             { selected_feedback.comments.map(comment => <Comment comment={comment} onReply={handleReply} />) }

@@ -10,10 +10,14 @@ import { CATEGORIES } from "../../../../assets/constants/constants";
 /* Styles */
 import "./suggestion_item.component.scss";
 
-const SuggestionItem = ({product}) => {
+const SuggestionItem = ({product, onUpVoteClick = () => {}}) => {
     return(
         <div className="suggestion">
-            <button type="button" className="upvotes">
+            <button 
+                type="button" 
+                className={`upvotes ${product.is_upvoted ? "upvotes--active" : ""}`}
+                onClick={() => onUpVoteClick(product.id)}
+            >
                 <span className="upvotes__icon"></span>
                 <p className="upvotes__count">{product.upvotes}</p>
             </button>
