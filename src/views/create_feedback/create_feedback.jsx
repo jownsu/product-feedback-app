@@ -43,13 +43,14 @@ const CreateFeedback = () => {
 
     return(
         <div className="create_feedback">
-            <Link 
-                to="/" 
+            <button 
+                type="button" 
                 className="back"
+                onClick={() => navigate(-1)}
             >
                 <span className="back__icon"></span> 
                 Go back
-            </Link>
+            </button>
             <form onSubmit={handleSubmit(handleCreateFeedbackSubmit)} className="create_feedback_form">
                 <span className="plus_icon"></span>
                 <h2>Create New Feedback</h2>
@@ -96,7 +97,7 @@ const CreateFeedback = () => {
                     {errors?.description && <p className="input__error_msg">Can't be empty</p>}
                 </div>
                 <div className="action_container">
-                    <Link to="/" className="btn btn--tertiary">Cancel</Link>
+                    <button onClick={() => navigate(-1)} className="btn btn--tertiary">Cancel</button>
                     <button type="submit" className="btn btn--primary">Add Feedback</button>
                 </div>
             </form>

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleVote } from "../../redux/feedback_slice";
 
 /* Constants */
-import { CATEGORY, SORT } from "../../assets/constants/constants";
+import { CATEGORY, SORT, STATUS } from "../../assets/constants/constants";
 
 /* Components */
 import SideBar from "./components/sidebar/side_bar.component";
@@ -81,6 +81,9 @@ function Home() {
             <SideBar 
                 category={category}
                 setCategory={onChangeCategory}
+                planned_count={product_requests.filter(request => STATUS[request.status] === "Planned").length}
+                in_progress_count={product_requests.filter(request => STATUS[request.status] === "In-Progress").length}
+                live_count={product_requests.filter(request => STATUS[request.status] === "Live").length}
             />
             <main>
                 <SuggestionHeader 

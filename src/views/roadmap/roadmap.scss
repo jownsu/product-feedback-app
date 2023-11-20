@@ -1,0 +1,72 @@
+@import "../../assets/sass/variables";
+
+.roadmap{
+
+    max-width: 110rem;
+    width: 100%;
+    margin: 7.8rem auto;
+    .header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: $color_tertiary;
+        padding: 0 4rem 0 3rem;
+        height: 11.3rem;
+        border-radius: 1rem;
+
+        &__left{
+            button{
+                text-decoration: none;
+                background: none;
+                border: none;
+                outline: none;
+                color: $color_white;
+                font-size: 1.4rem;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+                margin-bottom: .8rem;
+
+                .left_icon{
+                    background: url("/images/shared/icon-arrow-left-white.svg") no-repeat center;
+                    display: block;
+                    height: 1rem;
+                    width: 1rem;
+                }
+            }
+            h3{
+                color: $color_white;
+                font-size: 2.4rem;
+                font-weight: 700;
+                letter-spacing: -0.333px;
+            }
+        }
+    }
+
+    .status{
+        margin-top: 4.8rem;
+        display: flex;
+        justify-content: space-between;
+
+        &__head{
+            flex: 1;
+            max-width: 35rem;
+            
+            h4{
+                font-size: 1.8rem;
+                font-weight: 700;
+                letter-spacing: -0.25px;
+                color: $color_grey_dark_1;
+                margin-bottom: .4rem;
+            }
+
+            p{
+                font-size: 1.6rem;
+                font-weight: 400;
+                color: $color_grey_dark_2;
+            }
+        }
+    }
+
+}

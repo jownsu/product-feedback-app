@@ -208,6 +208,9 @@ body{
 }
 
 .back{
+    background: none;
+    outline: none;
+    border: none;
     color: $color_grey_dark_2;
     font-weight: 700;
     font-size: 1.4rem;

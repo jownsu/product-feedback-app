@@ -10,7 +10,16 @@ import { Link } from "react-router-dom";
 /* Styles */
 import "./side_bar.component.scss";
 
-const SideBar = ({category, setCategory = () => {}}) => {
+const SideBar = (props) => {
+
+    const {
+        category, 
+        setCategory = () => {},
+        planned_count,
+        in_progress_count,
+        live_count
+    } = props;
+
     return(
         <aside id="sidebar">
             <div className="header">
@@ -66,21 +75,21 @@ const SideBar = ({category, setCategory = () => {}}) => {
             <div className="roadmap">
                 <div className="roadmap__header">
                     <p>Roadmap</p>
-                    <Link to="/">View</Link>
+                    <Link to="/roadmap">View</Link>
                 </div>
 
                 <div className="roadmap__list">
                     <div className="roadmap__item">
                         <p className="roadmap__item--title">Planned</p>
-                        <p className="roadmap__item--count">2</p>
+                        <p className="roadmap__item--count">{planned_count}</p>
                     </div>
                     <div className="roadmap__item">
                         <p className="roadmap__item--title">In-Progress</p>
-                        <p className="roadmap__item--count">3</p>
+                        <p className="roadmap__item--count">{in_progress_count}</p>
                     </div>
                     <div className="roadmap__item">
                         <p className="roadmap__item--title">Live</p>
-                        <p className="roadmap__item--count">1</p>
+                        <p className="roadmap__item--count">{live_count}</p>
                     </div>
                 </div>
             </div>

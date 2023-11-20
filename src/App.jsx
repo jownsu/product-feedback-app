@@ -6,6 +6,7 @@ import Home from "./views/home/home";
 import CreateFeedback from "./views/create_feedback/create_feedback";
 import Feedbacks from "./views/feedbacks/feedbacks";
 import EditFeedback from "./views/edit_feedback/edit_feedback";
+import Roadmap from "./views/roadmap/roadmap";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
                 <Route path="/create_feedback" element={<CreateFeedback />} />
                 <Route path="/feedbacks/:feedback_id" element={<Feedbacks />} />
                 <Route path="/edit_feedback/:feedback_id" element={<EditFeedback />} />
+                <Route path="/roadmap" element={<Roadmap />} />
             </Routes>        
         </BrowserRouter>
     )
