@@ -94,12 +94,15 @@ function Home() {
                 <div id="suggestions_container">
                     {
                         !!requests.length &&
-                            requests.map(product => <SuggestionItem 
-                                                        key={product.id} 
-                                                        product={product} 
-                                                        onUpVoteClick={handleUpVoteClick}
-                                                    />
-                                        )
+                            requests.map(product => {
+                                return (
+                                    <SuggestionItem 
+                                        key={product.id} 
+                                        product={product} 
+                                        onUpVoteClick={handleUpVoteClick}
+                                    />
+                                )
+                            })
                     }
                     {
                         !requests.length &&

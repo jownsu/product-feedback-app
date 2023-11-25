@@ -26,9 +26,9 @@ const SuggestionItem = ({product, onUpVoteClick = () => {}}) => {
                 <p className="product__description">{product.description}</p>
                 <div className="product__category">{CATEGORIES[product.category]}</div>
             </div>
-            <div className="comment">
-                <span className="comment__icon"></span>
-                <p className="comment__count">{product?.comments?.length}</p>
+            <div className="comment_count">
+                <span className="comment_count__icon"></span>
+                <p className="comment_count__count">{product?.comments?.length}</p>
             </div>
         </div>
     )

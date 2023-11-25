@@ -1,0 +1,100 @@
+@import "../../../../assets/sass/variables";
+
+.request_card{
+    background: $color_white;
+    padding: 2.5rem 3.2rem 3.2rem 3.2rem;
+    border-radius: 5px;
+    border-top: 6px solid $color_grey_dark_2;
+
+    &--Planned{
+        border-top-color: $color_orange;
+
+        .request_card__status::before{
+            background: $color_orange;
+        }
+    }
+
+    &--In-Progress{
+        border-top-color: $color_primary;
+
+        .request_card__status::before{
+            background: $color_primary;
+        }
+    }
+
+    &--Live{
+        border-top-color: $color_cyan;
+
+        .request_card__status::before{
+            background: $color_cyan;
+        }
+    }
+
+    &__status{
+        color: $color_grey_dark_2;
+        font-size: 1.6rem;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 2rem;
+        margin-bottom: .5rem;
+        
+        &::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            height: .8rem;
+            width: .8rem;
+            border-radius: 50%;
+            background: $color_black;
+        }
+    }
+
+    &__title{
+        color: $color_grey_dark_1;
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: -.25px;
+        text-decoration: none;
+        transition: all .2s;
+        &:hover{
+            color: $color_secondary;
+        }
+    }
+
+    &__description{
+        color: $color_grey_dark_2;
+        font-size: 1.6rem;
+        font-weight: 400;
+    }
+
+    &__category{
+        color: $color_secondary;
+        font-size: 1.3rem;
+        font-weight: 600;
+        padding: .6rem 1.5rem;
+        border-radius: 1rem;
+        background: $color_grey_light_1;
+        display: inline-block;
+        margin-top: 1.3rem;
+
+    }
+
+    &__foot{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1.6rem;
+
+        .upvotes{
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            padding: 1.1rem 1.2rem;
+
+            &__icon{
+                margin-top: 0;
+            }
+        }
+    }
+}

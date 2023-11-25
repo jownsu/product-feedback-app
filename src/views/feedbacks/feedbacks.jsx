@@ -3,6 +3,7 @@ import React from "react";
 
 /* Redux */
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { postComment, postReply, toggleVote } from "../../redux/feedback_slice";
 
 /* Components */
@@ -23,6 +24,7 @@ import "./feedbacks.scss";
 const Feedbacks = () => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { feedback_id } = useParams();
     const { product_requests } = useSelector(state => state.feedback);
 
@@ -42,13 +44,14 @@ const Feedbacks = () => {
     return(
         <div className="feedbacks">
             <div className="header">
-                <Link 
-                    to="/" 
+                <button 
+                    type="button"
+                    onClick={() => navigate(-1)}
                     className="back"
                 >
                     <span className="back__icon"></span> 
                     Go back
-                </Link>
+                </button>
                 {
                     selected_feedback &&
                         <Link 

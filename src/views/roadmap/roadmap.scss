@@ -1,7 +1,6 @@
 @import "../../assets/sass/variables";
 
-.roadmap{
-
+.roadmap_page{
     max-width: 110rem;
     width: 100%;
     margin: 7.8rem auto;
@@ -69,4 +68,17 @@
         }
     }
 
+    .requests{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 3rem;
+
+        &__block{
+            flex: 1;
+            max-width: 35rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.4rem;
+        }
+    }
 }
