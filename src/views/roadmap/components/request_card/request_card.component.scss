@@ -6,6 +6,10 @@
     border-radius: 5px;
     border-top: 6px solid $color_grey_dark_2;
 
+    @media only screen and (max-width: $bp_tablet){
+        padding: 2.1rem 2rem 2.4rem 2rem;
+    }
+
     &--Planned{
         border-top-color: $color_orange;
 
@@ -39,6 +43,11 @@
         justify-content: space-between;
         padding-left: 2rem;
         margin-bottom: .5rem;
+
+        @media only screen and (max-width: $bp_tablet){
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
         
         &::before{
             content: "";
@@ -58,6 +67,13 @@
         letter-spacing: -.25px;
         text-decoration: none;
         transition: all .2s;
+        display: block;
+
+        @media only screen and (max-width: $bp_tablet){
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
         &:hover{
             color: $color_secondary;
         }
@@ -67,18 +83,28 @@
         color: $color_grey_dark_2;
         font-size: 1.6rem;
         font-weight: 400;
+
+        @media only screen and (max-width: $bp_tablet){
+            font-size: 1.3rem;
+        }
     }
 
     &__category{
         color: $color_secondary;
         font-size: 1.3rem;
         font-weight: 600;
-        padding: .6rem 1.5rem;
+        padding: 0 1.5rem;
+        height: 3rem;
         border-radius: 1rem;
         background: $color_grey_light_1;
-        display: inline-block;
+        display: flex;
+        align-items: center;
+        width: fit-content;
         margin-top: 1.3rem;
 
+        @media only screen and (max-width: $bp_tablet){
+            margin-top: 2.1rem;
+        }
     }
 
     &__foot{
@@ -86,11 +112,23 @@
         justify-content: space-between;
         margin-top: 1.6rem;
 
+        @media only screen and (max-width: $bp_tablet){
+            .comment_count__count{
+                font-size: 1.3rem;
+            }
+        }
+
         .upvotes{
             flex-direction: row;
             align-items: center;
             justify-content: center;
-            padding: 1.1rem 1.2rem;
+            height: 4rem;
+            padding: 0 1.2rem;
+
+            @media only screen and (max-width: $bp_tablet){
+                padding: 0 1.5rem;
+                height: 3.2rem;
+            }
 
             &__icon{
                 margin-top: 0;

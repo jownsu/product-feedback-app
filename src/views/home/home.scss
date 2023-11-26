@@ -1,10 +1,18 @@
 @import "../../assets/sass/variables";
 
 #home{
+    width: 98%;
     max-width: $max_width;
     margin: 9.4rem auto 0;
     display: flex;
     gap: 3rem;
+
+    @media only screen and (max-width: $bp_tablet){
+        flex-direction: column;
+        margin-top: 5.6rem;
+        width: calc(100% - 8rem);
+        gap: 4rem;
+    }
 
     main{
         flex: 1;
@@ -14,6 +22,10 @@
             display: flex;
             flex-direction: column;
             gap: 2rem;
+
+            @media only screen and (max-width: $bp_tablet){
+                gap: 1.6rem;
+            }
         }
     }
 }

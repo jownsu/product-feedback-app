@@ -3,6 +3,12 @@
 .feedbacks{
     margin: 8rem auto 2rem;
     max-width: 73rem;
+    width: 100%;
+
+    @media only screen and (max-width: $bp_tablet){
+        max-width: calc(100% - 8rem);
+        margin-top: 5.6rem;
+    }
 
     .header{
         display: flex;

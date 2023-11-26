@@ -3,6 +3,11 @@
 .create_feedback{
     margin: 9.2rem auto;
     max-width: 54rem;
+    width: 100%;
+
+    @media only screen and (max-width: $bp_tablet){
+        margin-top: 5.6rem;
+    }
 
     .create_feedback_form{
         background: $color_white;

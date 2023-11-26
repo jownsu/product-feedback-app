@@ -2,8 +2,14 @@
 
 .roadmap_page{
     max-width: 110rem;
-    width: 100%;
+    width: 98%;
     margin: 7.8rem auto;
+
+    @media only screen and (max-width: $bp_tablet){
+        margin-top: 5.6rem;
+        width: calc(100% - 8rem);
+    }
+
     .header{
         display: flex;
         justify-content: space-between;
@@ -47,6 +53,7 @@
         margin-top: 4.8rem;
         display: flex;
         justify-content: space-between;
+        gap: 1rem;
 
         &__head{
             flex: 1;
@@ -58,12 +65,20 @@
                 letter-spacing: -0.25px;
                 color: $color_grey_dark_1;
                 margin-bottom: .4rem;
+
+                @media only screen and (max-width: $bp_tablet){
+                    font-size: 1.4rem;
+                }
             }
 
             p{
                 font-size: 1.6rem;
                 font-weight: 400;
                 color: $color_grey_dark_2;
+
+                @media only screen and (max-width: $bp_tablet){
+                    font-size: 1.4rem;
+                }
             }
         }
     }
@@ -72,6 +87,7 @@
         display: flex;
         justify-content: space-between;
         margin-top: 3rem;
+        gap: 1rem;
 
         &__block{
             flex: 1;
@@ -79,6 +95,10 @@
             display: flex;
             flex-direction: column;
             gap: 2.4rem;
+
+            @media only screen and (max-width: $bp_tablet){
+                gap: 1.6rem;
+            }
         }
     }
 }
