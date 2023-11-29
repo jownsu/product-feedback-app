@@ -53,7 +53,7 @@ const Comment = ({comment, onReply = () => {}}) => {
                 </button>
             </div>
 
-            <p className="comment__content">{comment.content}</p>
+            <p className={`comment__content ${comment?.replies && comment.replies.length ? "comment__content--with_reply" : ""}`}>{comment.content}</p>
 
             {
                 comment?.replies && comment.replies.length && 

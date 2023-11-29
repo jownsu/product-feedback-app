@@ -1,16 +1,39 @@
 @import "../../../../assets/sass/variables";
 
 .replies_container{
+    position: relative;
+
+    &::before{
+        content: "";
+        height: calc(100% - 10rem);
+        width: 1px;
+        background: #F0F1F5;
+        position: absolute;
+        left: 2.4rem;
+
+        @media only screen and (max-width: $bp_phone){
+            left: 0;
+        }
+    }
 
     .reply{
 
         padding-left: 7.2rem;
         padding-bottom: 3.1rem;
 
+        @media only screen and (max-width: $bp_phone){
+            padding-left: 2.4rem;
+            padding-bottom: 2.2rem;
+        }
+
         &__head{
             display: flex;
             align-items: center;
             gap: 3.2rem;
+
+            @media only screen and (max-width: $bp_phone){
+                gap: 1.6rem;
+            }
         }
 
         &__avatar{
@@ -21,6 +44,10 @@
 
         &__user{
             font-size: 1.4rem;
+
+            @media only screen and (max-width: $bp_phone){
+                font-size: 1.3rem;
+            }
 
             &--fullname{
                 color: $color_grey_dark_1;
@@ -45,6 +72,10 @@
             outline: none;
             background: none;
 
+            @media only screen and (max-width: $bp_phone){
+                font-size: 1.3rem;
+            }
+
             &:hover{
                 text-decoration: underline;
             }
@@ -56,6 +87,11 @@
             font-weight: 400;
             margin-left: 7.2rem;
             margin-top: 1.5rem;
+
+            @media only screen and (max-width: $bp_phone){
+                margin-left: 0;
+                font-size: 1.3rem;
+            }
         }
 
         &__tag{
