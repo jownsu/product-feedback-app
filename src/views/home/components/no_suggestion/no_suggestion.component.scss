@@ -8,12 +8,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 0 2rem;
 
     &__icon{
         height: 14rem;
         width: 13rem;
         background: url("/images/suggestions/illustration-empty.svg") no-repeat center;
         margin-bottom: 3.7rem;
+
+        @media only screen and (max-width: $bp_phone){
+            height: 10.8rem;
+            width: 10.2rem;
+            margin-bottom: 2rem;
+        }
     }
 
     &__title{
@@ -22,6 +29,11 @@
         font-weight: 700;
         letter-spacing: -.333px;
         margin-bottom: 1.2rem;
+        text-align: center;
+        
+        @media only screen and (max-width: $bp_phone){
+            font-size: 1.8rem;
+        }
     }
 
     &__description{
@@ -29,9 +41,18 @@
         font-size: 1.6rem;
         font-weight: 400;
         margin-bottom: 0;
+        text-align: center;
+
+        @media only screen and (max-width: $bp_phone){
+            font-size: 1.3rem;
+        }
     }
     
     .btn{
         margin-top: 4.7rem;
+
+        @media only screen and (max-width: $bp_phone){
+            margin-top: 2.5rem;
+        }
     }
 }

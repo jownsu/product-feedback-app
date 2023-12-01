@@ -9,6 +9,11 @@
         margin-top: 5.6rem;
     }
 
+    @media only screen and (max-width: $bp_phone){
+        padding: 0 2.4rem;
+        margin-top: 3.5rem;
+    }
+
     .edit_feedback_form{
         background: $color_white;
         padding: 5.7rem 4.2rem 4rem;
@@ -16,14 +21,25 @@
         margin-top: 5rem;
         position: relative;
 
+        @media only screen and (max-width: $bp_phone){
+            padding: 4.7rem 2.4rem 2.4rem;
+            margin-top: 5.4rem;
+        }
     
         .plus_icon{
             display: block;
             height: 5.6rem;
             width: 5.6rem;
-            background: url("/images/shared/icon-new-feedback.svg") no-repeat center;
+            background: url("/images/shared/icon-edit-feedback.svg") no-repeat center;
             position: absolute;
             top: -2.8rem;
+
+            @media only screen and (max-width: $bp_phone){
+                background: url("/images/shared/mobile/icon-edit-feedback.svg") no-repeat center;
+                height: 4rem;
+                width: 4rem;
+                top: -2rem;
+            }
         }
 
         h2{
@@ -32,6 +48,11 @@
             font-weight: 700;
             letter-spacing: -.333px;
             margin-bottom: 4rem;
+            
+            @media only screen and (max-width: $bp_phone){
+                font-size: 1.8rem;
+                margin-bottom: 2.5rem;
+            }
         }
 
         .action_container{
@@ -41,6 +62,26 @@
 
             :first-child{
                 margin-right: auto;
+
+                @media only screen and (max-width: $bp_phone){
+                    margin-right: unset;
+                    order: 3;
+                }
+            }
+
+            @media only screen and (max-width: $bp_phone){
+                flex-direction: column;
+                margin-top: 3.5rem;
+
+                .btn{
+                    &--tertiary{
+                        order: 2;
+                    }
+
+                    &--primary{
+                        order: 1;
+                    }
+                }
             }
         }
     }

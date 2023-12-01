@@ -202,6 +202,7 @@ body{
         font-size: 1.3rem;
         height: 4rem;
         padding: 0 2rem;
+        justify-content: center;
     }
 
     &:disabled{
@@ -290,6 +291,11 @@ body{
         font-weight: 700;
         letter-spacing: -.194px;
         line-height: normal;
+
+        
+        @media only screen and (max-width: $bp_phone){
+            font-size: 1.3rem;
+        }
     }
 
     &__sub_label{
@@ -298,6 +304,10 @@ body{
         font-weight: 400;
         line-height: normal;
         margin-bottom: 1.7rem;
+
+        @media only screen and (max-width: $bp_phone){
+            font-size: 1.3rem;
+        }
     }
 
     &__text, 
@@ -313,6 +323,11 @@ body{
         font-weight: 400;
         outline: none;
 
+        @media only screen and (max-width: $bp_phone){
+            font-size: 1.3rem;
+            padding: 0 1.6rem;
+        }
+
         &:focus{
             border: 1px solid $color_secondary;
         }
@@ -322,6 +337,10 @@ body{
         height: 9.6rem;
         padding: 1.2rem 2.4rem;
         resize: none;
+
+        @media only screen and (max-width: $bp_phone){
+            padding: 1.2rem 1.6rem;
+        }
     }
 
     &__dropdown{
@@ -346,6 +365,10 @@ body{
             transition: none;
             height: 100%;
             justify-content: space-between;
+
+            @media only screen and (max-width: $bp_phone){
+                font-size: 1.3rem;
+            }
 
             &.show{
                 background: $color_grey_light_2;
