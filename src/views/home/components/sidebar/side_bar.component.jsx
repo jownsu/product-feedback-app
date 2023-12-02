@@ -1,5 +1,5 @@
 /* React */
-import React from "react";
+import React, { useState } from "react";
 
 /* Constants */
 import { CATEGORY } from "../../../../assets/constants/constants";
@@ -20,6 +20,8 @@ const SideBar = (props) => {
         live_count
     } = props;
 
+    const [show_sidebar, setShowSidebar] = useState(false);
+
     return(
         <aside id="sidebar">
             <div className="header">
@@ -27,10 +29,14 @@ const SideBar = (props) => {
                     <p className="header__title">Frontend Mentor</p>
                     <p className="header__sub_title">Feedback Board</p>
                 </div>
-                <button type="button" className="header__menu"></button>
+                <button 
+                    type="button" 
+                    className={`header__menu ${show_sidebar ? "active" : ""}`}
+                    onClick={() => setShowSidebar(prev_state => !prev_state)}
+                ></button>
             </div>
 
-            <div className="side">
+            <div className={`side ${show_sidebar ? "active" : ""}`}>
                 <div className="suggestion_filter">
                     <button 
                         className={category === CATEGORY.ALL ? "active" : ""} 
