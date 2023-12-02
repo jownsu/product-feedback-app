@@ -1,18 +1,19 @@
 /* React */
-import React from "react";
+import React, { useState } from "react";
 
 /* Component */
 import RequestCard from "./components/request_card/request_card.component";
 
 /* Plugins */
 import { Link, useNavigate } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 
 /* Reducer */
 import { useDispatch, useSelector } from "react-redux";
 import { toggleVote } from "../../redux/feedback_slice";
 
 /* Constants */
-import { STATUS } from "../../assets/constants/constants";
+import { STATUS, BP } from "../../assets/constants/constants";
 
 /* Styles */
 import "./roadmap.scss";
@@ -21,6 +22,9 @@ const Roadmap = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const is_mobile = useMediaQuery({query: `(max-width: ${BP.phone})`});
+
+    const [active_status, setActiveStatus] = useState("Planned");
     const { product_requests } = useSelector(state => state.feedback);
 
     const planned_requests = product_requests.filter(request => STATUS[request.status] === "Planned");
@@ -37,61 +41,95 @@ const Roadmap = () => {
                 <Link to="/create_feedback" className="btn btn--primary">+ Add Feedback</Link>
             </div>
 
-            <div className="status">
-                <div className="status__head">
-                    <h4>Planned ({planned_requests.length})</h4>
-                    <p>Ideas prioritized for research</p>
-                </div>
-                <div className="status__head">
-                    <h4>In-progress ({in_progress_requests.length})</h4>
-                    <p>Currently being developed</p>
-                </div>
-                <div className="status__head">
-                    <h4>Live ({live_requests.length})</h4>
-                    <p>Released features</p>
-                </div>
-            </div>
+            {
+                is_mobile && 
+                    <div className="status_tab">
+                        <button 
+                            className={active_status === "Planned" ? "active" : ""}
+                            type="button"
+                            onClick={() => setActiveStatus("Planned")}
+                        >
+                            Planned ({planned_requests.length})
+                        </button>
+                        <button 
+                            className={active_status === "In-Progress" ? "active" : ""}
+                            type="button"
+                            onClick={() => setActiveStatus("In-Progress")}
+                        >
+                            In-progress ({in_progress_requests.length})
+                        </button>
+                        <button 
+                            className={active_status === "Live" ? "active" : ""}
+                            type="button"
+                            onClick={() => setActiveStatus("Live")}
+                        >
+                            Live ({live_requests.length})
+                        </button>
+                    </div>
+            }
 
             <div className="requests">
-                <div className="requests__block">
-                    {
-                        !!planned_requests.length && 
-                            planned_requests.map(request => {
-                                return (
-                                    <RequestCard 
-                                        request={request} 
-                                        onUpVoteClick={(id) => dispatch(toggleVote({id}))}
-                                    />
-                                )
-                            })
-                    }
-                </div>
-                <div className="requests__block">
-                    {
-                        !!in_progress_requests.length && 
-                            in_progress_requests.map(request => {
-                                return (
-                                    <RequestCard 
-                                        request={request} 
-                                        onUpVoteClick={(id) => dispatch(toggleVote({id}))}
-                                    />
-                                )
-                            })
-                    }
-                </div>
-                <div className="requests__block">
-                    {
-                        !!live_requests.length && 
-                            live_requests.map(request => {
-                                return (
-                                    <RequestCard 
-                                        request={request} 
-                                        onUpVoteClick={(id) => dispatch(toggleVote({id}))}
-                                    />
-                                )
-                            })
-                    }
-                </div>
+                {
+                    (!is_mobile || (is_mobile && active_status === "Planned")) &&
+                        <div className="requests__block">
+                            <div className="requests__head">
+                                <h4>Planned ({planned_requests.length})</h4>
+                                <p>Ideas prioritized for research</p>
+                            </div>
+                            {
+                                !!planned_requests.length && 
+                                    planned_requests.map(request => {
+                                        return (
+                                            <RequestCard 
+                                                key={request.id}
+                                                request={request} 
+                                                onUpVoteClick={(id) => dispatch(toggleVote({id}))}
+                                            />
+                                        )
+                                    })
+                            }
+                        </div>
+                }
+                {
+                    (!is_mobile || (is_mobile && active_status === "In-Progress")) &&
+                        <div className="requests__block">
+                            <div className="requests__head">
+                                <h4>In-progress ({in_progress_requests.length})</h4>
+                                <p>Currently being developed</p>
+                            </div>
+                            {
+                                !!in_progress_requests.length && 
+                                    in_progress_requests.map(request => {
+                                        return (
+                                            <RequestCard 
+                                                request={request} 
+                                                onUpVoteClick={(id) => dispatch(toggleVote({id}))}
+                                            />
+                                        )
+                                    })
+                            }
+                        </div>
+                }
+                {
+                    (!is_mobile || (is_mobile && active_status === "Live")) &&
+                        <div className="requests__block">
+                            <div className="requests__head">
+                                <h4>Live ({live_requests.length})</h4>
+                                <p>Released features</p>
+                            </div>
+                            {
+                                !!live_requests.length && 
+                                    live_requests.map(request => {
+                                        return (
+                                            <RequestCard 
+                                                request={request} 
+                                                onUpVoteClick={(id) => dispatch(toggleVote({id}))}
+                                            />
+                                        )
+                                    })
+                            }
+                        </div>
+                }
             </div>
         </div>
     )

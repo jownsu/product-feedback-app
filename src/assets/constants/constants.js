@@ -38,3 +38,7 @@ export const STATUS = {
     3: "In-Progress",
     4: "Live"
 };
+
+export const BP = {
+    phone: "740px"
+}

@@ -51,11 +51,16 @@ aside#sidebar{
         }
 
         &__menu{
+            display: none;
             background: url("/images/shared/mobile/icon-hamburger.svg") no-repeat center;
             height: 2rem;
             width: 2rem;
             border: none;
             outline: none;
+
+            @media only screen and (max-width: $bp_phone){
+                display: block;
+            }
         }
 
         &__title{
