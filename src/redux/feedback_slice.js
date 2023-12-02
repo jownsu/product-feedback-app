@@ -1,11 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 import data from "../assets/data.json";
 
+let product_requests;
+let localstorage_product_request = localStorage.getItem("product_requests");
+
+if(localstorage_product_request){
+    product_requests = JSON.parse(localstorage_product_request);
+}
+else{
+    product_requests = data.product_requests;
+    localStorage.setItem("product_requests", JSON.stringify(data.product_requests));
+}
+
 export const feedbackSlice = createSlice({
     name: "feedback",
     initialState: {
         current_user: data.current_user,
-        product_requests: data.product_requests
+        product_requests: product_requests
     },
     reducers: {
         createFeedback: (state, action) => {
@@ -17,6 +28,8 @@ export const feedbackSlice = createSlice({
             }
 
             state.product_requests.unshift(new_feedback);
+
+            saveToLocalStorage(state.product_requests);
         },
         postComment: (state, action) => {
             let { id, content } = action.payload;
@@ -36,6 +49,8 @@ export const feedbackSlice = createSlice({
                 }
                 return feedback;
             });
+
+            saveToLocalStorage(state.product_requests);
         },
         postReply: (state, action) => {
             let { id, comment_id, content, replying_to } = action.payload;
@@ -68,6 +83,8 @@ export const feedbackSlice = createSlice({
                 }
                 return feedback;
             });
+
+            saveToLocalStorage(state.product_requests);
         },
         editFeedback: (state, action) => {
             state.product_requests = state.product_requests.map(feedback => {
@@ -79,10 +96,14 @@ export const feedbackSlice = createSlice({
                 }
                 return feedback;
             });
+
+            saveToLocalStorage(state.product_requests);
         },
         deleteFeedback: (state, action) => {
             let { id } = action.payload;
             state.product_requests = state.product_requests.filter(feedback => feedback.id !== +id);
+
+            saveToLocalStorage(state.product_requests);
         },
         toggleVote: (state, action) => {
             let { id } = action.payload;
@@ -97,6 +118,8 @@ export const feedbackSlice = createSlice({
                 }
                 return feedback;
             });
+
+            saveToLocalStorage(state.product_requests);
         }
     }
 });
@@ -104,6 +127,10 @@ export const feedbackSlice = createSlice({
 
 function generateRandomID() {
     return Math.floor(100 + Math.random() * 999999);
+}
+
+const saveToLocalStorage = (product_requests) => {
+    localStorage.setItem("product_requests", JSON.stringify(product_requests));
 }
 
 export const { 
