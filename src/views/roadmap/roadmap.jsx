@@ -45,21 +45,21 @@ const Roadmap = () => {
                 is_mobile && 
                     <div className="status_tab">
                         <button 
-                            className={active_status === "Planned" ? "active" : ""}
+                            className={active_status === "Planned" ? "active active--planned" : ""}
                             type="button"
                             onClick={() => setActiveStatus("Planned")}
                         >
                             Planned ({planned_requests.length})
                         </button>
                         <button 
-                            className={active_status === "In-Progress" ? "active" : ""}
+                            className={active_status === "In-Progress" ? "active active--in-progress" : ""}
                             type="button"
                             onClick={() => setActiveStatus("In-Progress")}
                         >
                             In-progress ({in_progress_requests.length})
                         </button>
                         <button 
-                            className={active_status === "Live" ? "active" : ""}
+                            className={active_status === "Live" ? "active active--live" : ""}
                             type="button"
                             onClick={() => setActiveStatus("Live")}
                         >

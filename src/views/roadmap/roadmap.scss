@@ -97,6 +97,18 @@
             &.active{
                 color: $color_grey_dark_1;
                 border-bottom: 4px solid $color_primary;
+
+                &--planned{
+                    border-bottom-color: $color_orange;
+                }
+
+                &--in-progress{
+                    border-bottom-color: $color_primary;
+                }
+
+                &--live{
+                    border-bottom-color: $color_cyan;
+                }
             }
         }
     }
